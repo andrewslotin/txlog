@@ -111,5 +111,5 @@ func (suite *TransactinalLoggerSuite) TestTermination(c *C) {
 	c.Check(suite.writer.Entries, HasLen, openTransactionsNum)
 
 	c.Check(suite.txLogger.transactions, HasLen, 0)
-	c.Check(func() { suite.txLogger.out <- transactionEntry{} }, PanicMatches, "runtime error: send on closed channel")
+	c.Check(func() { suite.txLogger.out <- transactionEntry{} }, PanicMatches, ".*send on closed channel")
 }
